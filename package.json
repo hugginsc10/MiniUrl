@@ -19,7 +19,8 @@
   "dependencies": {
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "mongoose": "^5.9.4"
+    "mongoose": "^5.9.4",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
