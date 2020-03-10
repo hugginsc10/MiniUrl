@@ -1,11 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrl')
 const app = express();
 
-mongoose.connect('mongodb://localhost/urlShortener', {
+const uri = `mongodb+srv://admin:${process.env.DB_PASS}@url-database-ftief.mongodb.net/test?retryWrites=true&w=majority`
+
+mongoose.connect(uri, {
   useNewUrlParser: true, useUnifiedTopology: true
 })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch(err => console.log(err))
 
 app.set('view engine', 'ejs')
 
@@ -29,4 +34,14 @@ app.get('/:shortUrl', async (req, res) => {
 
   res.redirect(shortUrl.full);
 })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('/', async (req, res) => {
+    const shortUrls = await ShortUrl.find()
+    res.render('index', {
+      shortUrls: shortUrls
+    })
+  })
+}
 app.listen(process.env.PORT || 5000);

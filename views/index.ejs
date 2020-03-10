@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <script>
+    function checkURL(abc) {
+        string = abc.value
+        if (!(/^http:\/\//.test(string))) {
+          string = "http://" + string;
+        }
+        abc.value = string
+      }
+  </script>
   <title>Mini URL Maker</title>
 </head>
 <body>
@@ -13,7 +21,7 @@
   <h1>Mini URL Maker</h1>
   <form action="/shortUrls" method="POST" class="my-4 form-inline">
     <label for="fullUrl"class="sr-only">URL</label>
-    <input required placeholder="URL" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+    <input required placeholder="URL" type="url" onkeyup="checkURL(this)"  name="fullUrl" id="fullUrl" class="form-control col mr-2">
     <button type="submit"class="btn btn-success">Shrink</button>
   </form>
 </body>
