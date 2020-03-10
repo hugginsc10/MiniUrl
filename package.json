@@ -1,0 +1,27 @@
+{
+  "name": "mini-url",
+  "version": "1.0.0",
+  "description": "Simple URL Shortener using Node.js, ExpressJS and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugginsc10/MiniUrl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugginsc10/MiniUrl/issues"
+  },
+  "homepage": "https://github.com/hugginsc10/MiniUrl#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
